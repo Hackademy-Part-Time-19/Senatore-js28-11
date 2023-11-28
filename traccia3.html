@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Esempio di utilizzo del DOM</title>
+</head>
+
+<body style="background-color: black;min-width: 100vh;height: 100%;">
+    <p id="paragrafo1">Primo paragrafo</p>
+    <p id="paragrafo2">Secondo paragrafo</p>
+    <p id="paragrafo3">Terzo paragrafo</p>
+
+    <button onclick="cambiaColore()">Cambia colore</button>
+    <button onclick="rendiGrassetto()">Rendi grassetto</button>
+    <button onclick="mostraNascondi()">Mostra/Nascondi</button>
+
+    <script>
+        function cambiaColore() {
+            var paragrafi = document.getElementsByTagName("p");
+            for (var i = 0; i < paragrafi.length; i++) {
+                var coloreCasuale = generaColoreCasuale();
+                paragrafi[i].style.color = coloreCasuale;
+            }
+        }
+
+        function rendiGrassetto() {
+            var paragrafi = document.getElementsByTagName("p");
+            for (var i = 0; i < paragrafi.length; i++) {
+                paragrafi[i].style.fontWeight = "bold";
+            }
+        }
+
+        function mostraNascondi() {
+            var paragrafi = document.getElementsByTagName("p");
+            for (var i = 0; i < paragrafi.length; i++) {
+                if (paragrafi[i].style.display === "none") {
+                    paragrafi[i].style.display = "block";
+                } else {
+                    paragrafi[i].style.display = "none";
+                }
+            }
+        }
+
+        function generaColoreCasuale() {
+            var caratteri = "0123456789ABCDEF";
+            var colore = "#";
+            for (var i = 0; i < 6; i++) {
+                colore += caratteri[Math.floor(Math.random() * 16)];
+            }
+            return colore;
+        }
+    </script>
+</body>
+
+</html>
